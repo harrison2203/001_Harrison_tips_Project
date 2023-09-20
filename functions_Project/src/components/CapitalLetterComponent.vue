@@ -1,25 +1,27 @@
 <script setup>
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
-import TitlePropsComponent from './souscomponents/TitlePropsComponent.vue';
+import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 import { ref } from 'vue';
 
-const titleComponent = "Write a sentence down";
+const descriptionComponent = "Write a sentence down";
 const customCapitalMessage = "Write whatever you want here :";
 const inputName = ref('');
 const array = ref ([]);
 const result = ref('');
 
-function handleInputChanged(newValue){ // emit qui reçoit l'input de 'InputNameComponent.vue'
+function receiveEmit(newValue){ // emit qui reçoit l'input de 'InputNameComponent.vue'
   inputName.value = newValue
 }
 
 function capitalLetter(){
+
     array.value = inputName.value.split(" ");
     
     for (let i=0; i <array.value.length; i++){
     array.value[i] = array.value[i].charAt(0).toUpperCase() + array.value[i].slice(1)
     }
+
     result.value = array.value.join (" ");
 }
 </script>
@@ -28,13 +30,12 @@ function capitalLetter(){
     <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form class="space-y-6" action="#">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">Capital Letter</h5>
-            <div>
-                <TitlePropsComponent :title="titleComponent">
-                </TitlePropsComponent>
-            </div>
+            
 
             <div>
-            <InputNameComponent :message="customCapitalMessage" @inputChanged="handleInputChanged">
+                <DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent></div>
+            <div>
+            <InputNameComponent :message="customCapitalMessage" @inputChanged="receiveEmit">
             </InputNameComponent>
             </div>
 

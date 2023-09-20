@@ -1,12 +1,12 @@
 <script setup>
 import { ref, defineProps } from 'vue';
 
-const { title } = defineProps(['title']);
+const { description } = defineProps(['description']);
 
 </script>
 
 <template>
 	<div>
-		<h1>{{ title }}</h1>
+		<h1>{{ description }}</h1>
 	</div>
 </template>

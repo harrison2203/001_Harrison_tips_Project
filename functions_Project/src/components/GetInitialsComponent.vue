@@ -1,15 +1,15 @@
 <script setup>
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
-import TitlePropsComponent from './souscomponents/TitlePropsComponent.vue';
+import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 import { ref, onMounted } from 'vue';
 
-const titleComponent = "Write words and get the initials.";
+const descriptionComponent = "Write words and get the initials.";
 const customLabel = "Get your name:";
 const inputName = ref('');
 const abbreviatedName = ref('');
 
-function handleInputChanged(newValue){ // emit qui reçoit l'input de 'InputNameComponent.vue'
+function receiveEmit(newValue){ // emit qui reçoit l'input de 'InputNameComponent.vue'
   inputName.value = newValue
 }
 
@@ -41,11 +41,11 @@ function getInitials() {
     <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
       <form class="space-y-6" action="#">
           <h5 class="text-xl font-medium text-gray-900 dark:text-white">Initiales</h5>
-          <TitlePropsComponent :title="titleComponent">
-          </TitlePropsComponent>
+          <DescriptionPropsComponent :description="descriptionComponent">
+          </DescriptionPropsComponent>
         
           <div>
-            <InputNameComponent :message="customLabel" @inputChanged="handleInputChanged">
+            <InputNameComponent :message="customLabel" @inputChanged="receiveEmit">
             </InputNameComponent>
           </div>
 

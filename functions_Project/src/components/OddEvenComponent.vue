@@ -1,20 +1,34 @@
 <script setup>
 import { ref } from 'vue';
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
-import TitlePropsComponent from './souscomponents/TitlePropsComponent.vue';
+import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
+import InputNameComponent from './souscomponents/InputNameComponent.vue';
+import SecondInputName from './souscomponents/SecondInputName.vue';
+import TitleComponent from './souscomponents/TitleComponent.vue';
 
-const titleComponent = "Write a number and get if is even or not.";
+const customOddLabel = "Write down a number:";
+const titleComponent = "Odd or Even";
+const descriptionComponent = "Write a number and get if is even or not.";
 const inputName = ref('');
-const result = ref('');
+const inputNameResult = ref('');
+
+function receiveEmit (newValue) {
+    inputName.value = newValue.value;
+}
+
+function receiveSecondEmit (newOtherValue) {
+    inputNameResult.value = newOtherValue.value;
+
+}
 
 function evenOrNot (){
 
     if (inputName.value %2 === 0) {
-        result.value = "Even";
-
+        inputNameResult.value = "Even";
     } else{
-        result.value = "Odd";
+        inputNameResult.value = "Odd";
     }
+
 }
 
 </script>
@@ -23,23 +37,13 @@ function evenOrNot (){
 
     <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form class="space-y-6" action="#">
-            <h5 class="text-xl font-medium text-gray-900 dark:text-white">Odd or Even</h5>
-            
-            <TitlePropsComponent :title="titleComponent"></TitlePropsComponent>
+            <TitleComponent :title="titleComponent"></TitleComponent>
 
-            <div>
-                <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Put your name:</label>
-                <input id="number-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
-                v-model="inputName"
-                />
-            </div>
+            <DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
 
-            <div>
-                <label for="result" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Odd or Not:</label>
-                <input id="result" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required
-                v-model="result"
-                />
-            </div>
+            <InputNameComponent :message="customOddLabel" @inputChanged="receiveEmit"></InputNameComponent>
+
+            <SecondInputName @emitResult="receiveSecondEmit"></SecondInputName>
 
             <ButtonComponent @click="evenOrNot"/>
         </form>

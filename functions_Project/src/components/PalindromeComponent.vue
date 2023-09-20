@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue';
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
-import TitlePropsComponent from './souscomponents/TitlePropsComponent.vue';
+import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 
-const titleComponent = "Is it the same backwards?."
+const descriptionComponent = "Is it the same backwards?."
 const customMessage = "Put a word :"
 const inputName = ref('');
 const splitString = ref ('');
@@ -33,7 +33,7 @@ function isPalindrome (){
         <form class="space-y-6" action="#">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">Palindrome</h5>
 
-            <TitlePropsComponent :title="titleComponent"></TitlePropsComponent>
+            <DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
 
             <div>
             <InputNameComponent :message="customMessage" @inputChanged="receiveEmit">

@@ -2,9 +2,9 @@
 import { ref } from 'vue';
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
-import TitlePropsComponent from './souscomponents/TitlePropsComponent.vue';
+import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 
-const titleComponent = "You will see vowels disapear.";
+const descriptionComponent = "You will see vowels disapear.";
 const eraseVowelsMessage = "Write a sentence here:";
 const inputName = ref('');
 const result = ref('');
@@ -26,7 +26,7 @@ function eraseVowel (){
         <form class="space-y-6" action="#">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">Erase vowels</h5>
             
-            <TitlePropsComponent :title="titleComponent"></TitlePropsComponent>
+            <DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
             
             <div>
             <InputNameComponent :message="eraseVowelsMessage" @inputChanged="receiveEmit">

@@ -9,7 +9,7 @@ const reverseName = ref ('Reverse'.split('').reverse().join(''));
 const reversedText = ref(''); // stocke la string inversé
 const inputName = ref(''); // stocke le string que je mets dans l'input
 
-function handleInputChanged(newValue){ // emit qui reçoit l'input de 'InputNameComponent.vue'
+function receiveEmit(newValue){ // emit qui reçoit l'input de 'InputNameComponent.vue'
   inputName.value = newValue;
 }
 
@@ -27,7 +27,7 @@ function reverse() {
           <h1>Write a word and get it reversed.</h1>
 
           <div>
-            <InputNameComponent :message="customMessage" @inputChanged="handleInputChanged">
+            <InputNameComponent :message="customMessage" @inputChanged="receiveEmit">
             </InputNameComponent>
           </div>
 

@@ -3,7 +3,10 @@
 import { ref } from 'vue';
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
+import TitleComponent from './souscomponents/TitleComponent.vue';
+import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 
+const descriptionComponent = "Write a word and get it reversed.";
 const customMessage = "Put your name:";
 const reverseName = ref ('Reverse'.split('').reverse().join(''));
 const reversedText = ref(''); // stocke la string inversé
@@ -21,23 +24,18 @@ function reverse() {
 </script>
 
 <template>
-    <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-      <form class="space-y-6" action="#">
-          <h5 class="text-xl font-medium text-gray-900 dark:text-white">{{ reverseName }}</h5>
-          <h1>Write a word and get it reversed.</h1>
-
+  <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <form class="space-y-6" action="#">
+        <TitleComponent :title="reverseName"></TitleComponent>
+        <DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
+          <InputNameComponent :message="customMessage" @inputChanged="receiveEmit"></InputNameComponent>
           <div>
-            <InputNameComponent :message="customMessage" @inputChanged="receiveEmit">
-            </InputNameComponent>
+            <label for="name-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">your reversed name:</label>
+            <input id="name-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required
+            v-model="reversedText"
+            />
           </div>
-
-          <div>
-              <label for="name-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">your reversed name:</label>
-              <input id="name-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required
-              v-model="reversedText"
-        />
-          </div>
-          <ButtonComponent @click="reverse"/>
-      </form>
+        <ButtonComponent @click="reverse"/>
+    </form>
   </div>
 </template>

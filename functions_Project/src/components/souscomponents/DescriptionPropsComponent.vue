@@ -2,11 +2,10 @@
 import { ref, defineProps } from 'vue';
 
 const { description } = defineProps(['description']);
-
 </script>
 
 <template>
 	<div>
-		<h1>{{ description }}</h1>
+			<h1>{{ description }}</h1>
 	</div>
 </template>

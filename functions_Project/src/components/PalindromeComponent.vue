@@ -4,6 +4,7 @@ import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
 import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 import TitleComponent from './souscomponents/TitleComponent.vue';
+import InputResultComponent from './souscomponents/InputResultComponent.vue';
 
 const titlePalindrome = "Palindrome";
 const descriptionComponent = "Is it the same backwards?."
@@ -12,6 +13,9 @@ const inputName = ref('');
 const splitString = ref ('');
 const result = ref('');
 
+function receiveEmitResult(newVal){
+	result.value = newVal;
+}
 function receiveEmit(newValue){
     inputName.value = newValue;
 }
@@ -36,15 +40,7 @@ function isPalindrome (){
       <TitleComponent :title="titlePalindrome"></TitleComponent>
       <DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
       <InputNameComponent :message="customMessage" @inputChanged="receiveEmit"></InputNameComponent>
-      <div>
-        <label for="reverse-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">It's a palindrome?</label>
-        <input
-          id="reverse-name"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-          required
-          v-model="result"
-        />
-      </div>
+			<InputResultComponent :value="result" @inputRes="receiveEmitResult"></InputResultComponent>
       <ButtonComponent @click="isPalindrome" />
     </form>
   </div>

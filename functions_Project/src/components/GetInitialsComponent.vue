@@ -3,7 +3,8 @@ import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
 import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 import TitleComponent from './souscomponents/TitleComponent.vue';
-import { ref, onMounted } from 'vue';
+import InputResultComponent from './souscomponents/InputResultComponent.vue';
+import { ref } from 'vue';
 
 const titleInitials = "Initiales";
 const descriptionComponent = "Write words and get the initials.";
@@ -11,10 +12,16 @@ const customLabel = "Get your name:";
 const inputName = ref('');
 const abbreviatedName = ref('');
 
-function receiveEmit(newValue){ // emit qui reçoit l'input de 'InputNameComponent.vue'
+// emit qui reçoit l'input de 'InputResultComponent'
+function receiveEmitResult(newVal){
+	abbreviatedName.value = newVal;
+}
+// emit qui reçoit l'input de 'InputNameComponent'
+function receiveEmit(newValue){ 
   inputName.value = newValue
 }
 
+//fonction principale
 function abbrevName() {
   let trimVariable = inputName.value.trim();
   let splitName = trimVariable.split(" ");
@@ -45,15 +52,7 @@ function getInitials() {
         <TitleComponent :title="titleInitials"></TitleComponent>
         <DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
         <InputNameComponent :message="customLabel" @inputChanged="receiveEmit"></InputNameComponent>
-        <div>
-          <label for="reverse-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Result:</label>
-          <input
-            id="reverse-name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-            required
-            v-model="abbreviatedName"
-          />
-        </div>
+				<InputResultComponent :value="abbreviatedName" @inputRes="receiveEmitResult"></InputResultComponent>
         <ButtonComponent @click="getInitials"/>
     </form>
   </div>

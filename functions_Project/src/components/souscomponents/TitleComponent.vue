@@ -6,6 +6,6 @@ const {title} = defineProps(['title']);
 
 <template>
 	<div>
-		<h5 class="text-xl font-medium text-gray-900 dark:text-white">{{ title }}</h5>
+			<h5 class="text-xl font-medium text-gray-900 dark:text-white">{{ title }}</h5>
 	</div>
 </template>

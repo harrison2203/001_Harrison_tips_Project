@@ -4,6 +4,7 @@ import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
 import TitleComponent from './souscomponents/TitleComponent.vue';
+import InputResultComponent from './souscomponents/InputResultComponent.vue';
 
 const customOddLabel = "Write down a number:";
 const titleComponent = "Odd or Even";
@@ -11,15 +12,18 @@ const descriptionComponent = "Write a number and get if is even or not.";
 const inputName = ref('');
 const result = ref('');
 
-function receiveEmit (newValue) {
+function receiveEmitResult(newVal){
+	result.value = newVal;
+}
+function receiveEmit(newValue){
     inputName.value = newValue;
 }
 
-function evenOrNot (){
+function evenOrNot(){
     if (inputName.value %2 === 0) {
-        inputNameResult.value = "Even";
+        result.value = "Even";
     } else{
-        inputNameResult.value = "Odd";
+        result.value = "Odd";
     }
 }
 
@@ -31,12 +35,7 @@ function evenOrNot (){
 					<TitleComponent :title="titleComponent"></TitleComponent>
 					<DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
 					<InputNameComponent :message="customOddLabel" @inputChanged="receiveEmit"></InputNameComponent>
-					<div>
-							<label for="result" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Odd or not : </label>
-							<input id="result" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required
-							v-model="result"
-							/>
-					</div>
+					<InputResultComponent :value="result" @inputRes="receiveEmitResult"></InputResultComponent>
 					<ButtonComponent @click="evenOrNot"/>
 			</form>
 	</div>

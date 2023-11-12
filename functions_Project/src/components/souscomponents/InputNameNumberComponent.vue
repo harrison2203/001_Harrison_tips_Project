@@ -3,25 +3,24 @@ import { ref, defineProps, defineEmits } from 'vue';
 
 const inputName = ref('');
 const { message } = defineProps(['message']);
-const emits = defineEmits(['inputChanged']);
+const emits = defineEmits(['inputChangedNumber']);
 
 const inputNameInfo = ref({
   value: inputName,
   errorMessage: '',
-	invalid: null
+	invalid : null
 });
 
-function onInputChange(){
-
+function inputChangedNumber(){
 	if(inputName.value !== ""){
-		emits('inputChanged', inputName.value);
+		emits('inputChangedNumber', inputName.value);
 
-		if(inputName.value.match(/[-_;,:!]/gi)){
-			inputNameInfo.value.errorMessage = "those values are forbidden";
+		if(inputName.value.match(/[a-zA-Z]/gi)){
+			inputNameInfo.value.errorMessage = "Please enter a number!";
 			inputNameInfo.value.invalid = true;
 
-		}else if(inputName.value.match(/[0-9]/gi)){
-			inputNameInfo.value.errorMessage = "Numbers are not allowed";
+		} else if (inputName.value.match(/[-_;,:!]/gi)){
+			inputNameInfo.value.errorMessage = "those values are forbidden!";
 			inputNameInfo.value.invalid = true;
 		}
 	}
@@ -36,15 +35,14 @@ function onInputChange(){
 			</slot>
 			<input
 					id="name-input"
-					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
 					:class="{'border border-red-500 border-2': inputNameInfo.invalid}" 
 					v-model="inputName"
-					@input="onInputChange"
+					@input="inputChangedNumber"
 			/>
 		</div>
 		<p v-if="inputNameInfo.errorMessage" class="text-base text-red-500">
-			{{ inputNameInfo.errorMessage }}
+				{{ inputNameInfo.errorMessage }}
 		</p>
 	</div>
 </template>
-

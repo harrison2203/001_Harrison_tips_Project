@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
-import InputNameComponent from './souscomponents/InputNameComponent.vue';
+import InputNameNumberComponent from './souscomponents/InputNameNumberComponent.vue';
 import TitleComponent from './souscomponents/TitleComponent.vue';
 import InputResultComponent from './souscomponents/InputResultComponent.vue';
 
@@ -12,19 +12,23 @@ const descriptionComponent = "Write a number and get if is even or not.";
 const inputName = ref('');
 const result = ref('');
 
+// This fonction receives inputResult
 function receiveEmitResult(newVal){
 	result.value = newVal;
 }
-function receiveEmit(newValue){
-    inputName.value = newValue;
+
+// this function receives the input as parameter.
+function receiveEmitNumber(newValue){
+  inputName.value = newValue;
 }
 
+//principal fonction
 function evenOrNot(){
-    if (inputName.value %2 === 0) {
-        result.value = "Even";
-    } else{
-        result.value = "Odd";
-    }
+	if(inputName.value %2 === 0){
+			result.value = "Even";
+	}else{
+			result.value = "Odd";
+	}
 }
 
 </script>
@@ -34,7 +38,8 @@ function evenOrNot(){
 			<form class="space-y-6" action="#">
 					<TitleComponent :title="titleComponent"></TitleComponent>
 					<DescriptionPropsComponent :description="descriptionComponent"></DescriptionPropsComponent>
-					<InputNameComponent :message="customOddLabel" @inputChanged="receiveEmit"></InputNameComponent>
+					<InputNameNumberComponent :message="customOddLabel" @inputChangedNumber="receiveEmitNumber">
+					</InputNameNumberComponent>
 					<InputResultComponent :value="result" @inputRes="receiveEmitResult"></InputResultComponent>
 					<ButtonComponent @click="evenOrNot"/>
 			</form>

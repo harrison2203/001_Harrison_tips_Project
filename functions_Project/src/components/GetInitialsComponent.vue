@@ -9,15 +9,15 @@ import { ref } from 'vue';
 const titleInitials = "Initiales";
 const descriptionComponent = "Write words and get the initials.";
 const customLabel = "Get your name:";
-const inputName = ref('');
 const abbreviatedName = ref('');
+const inputName = ref('');
 
 // emit qui reçoit l'input de 'InputResultComponent'
 function receiveEmitResult(newVal){
 	abbreviatedName.value = newVal;
 }
 // emit qui reçoit l'input de 'InputNameComponent'
-function receiveEmit(newValue){ 
+function receiveEmit(newValue){
   inputName.value = newValue
 }
 
@@ -40,10 +40,9 @@ function abbrevName() {
   return result;
 }
 
-function getInitials() {
+function getInitials(){
   abbreviatedName.value = abbrevName();
 }
-
 </script>
 
 <template>

@@ -13,7 +13,7 @@ const inputName = ref('');
 const matchNames = ref([]);
 
 const receiveSearchBar = (inputValue) => {
-	inputName.value = inputValue;5
+	inputName.value = inputValue;
 	console.log("testons", inputName.value)
 }
 
@@ -65,7 +65,7 @@ function receiveMapping(newValue){
 				</template>
 
 				<template v-else="">
-					<p>no matches found</p>
+					<p class="font-bold text-4xl text-red-600">No Matches Found</p>
 				</template>
 			</div>
 		

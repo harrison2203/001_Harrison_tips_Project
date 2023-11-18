@@ -12,7 +12,6 @@ const reverseName = ref ('Reverse'.split('').reverse().join(''));
 const reversedText = ref(''); // stocke la string inversé
 const inputName = ref(''); // stocke le string que je mets dans l'input
 
-
 function receiveEmitResult(newVal){
 	reversedText.value = newVal
 }

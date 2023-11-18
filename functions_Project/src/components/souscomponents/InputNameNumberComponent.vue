@@ -41,8 +41,8 @@ function inputChangedNumber(){
 					@input="inputChangedNumber"
 			/>
 		</div>
-		<p v-if="inputNameInfo.errorMessage" class="text-base text-red-500">
-				{{ inputNameInfo.errorMessage }}
-		</p>
+			<p v-if="inputNameInfo.errorMessage" class="text-base text-red-500">
+					{{ inputNameInfo.errorMessage }}
+			</p>
 	</div>
 </template>

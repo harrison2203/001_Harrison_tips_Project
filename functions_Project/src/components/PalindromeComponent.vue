@@ -31,7 +31,6 @@ function isPalindrome (){
     }
     return result.value
 }
-
 </script>
 
 <template>
@@ -44,5 +43,5 @@ function isPalindrome (){
       <ButtonComponent @click="isPalindrome" />
     </form>
   </div>
-  </template>
-  
+</template>
+

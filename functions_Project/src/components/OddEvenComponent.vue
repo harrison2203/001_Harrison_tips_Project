@@ -30,7 +30,6 @@ function evenOrNot(){
 			result.value = "Odd";
 	}
 }
-
 </script>
 
 <template>

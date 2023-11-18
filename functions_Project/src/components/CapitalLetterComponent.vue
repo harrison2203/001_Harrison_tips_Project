@@ -13,7 +13,6 @@ const inputName = ref('');
 const array = ref ([]);
 const result = ref('');
 
-
 function receiveEmitResult(newVal){
 	result.value = newVal;
 }
@@ -42,5 +41,4 @@ function capitalLetter(){
 			<ButtonComponent @click="capitalLetter" />
 		</form>
 	</div>
-  </template>
-  
+</template>

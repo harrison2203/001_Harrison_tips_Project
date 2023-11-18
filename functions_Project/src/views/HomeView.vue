@@ -68,9 +68,5 @@ function receiveMapping(newValue){
 					<p class="font-bold text-4xl text-red-600">No Matches Found</p>
 				</template>
 			</div>
-		
 	</div>
-	</template>
-
-	<style scoped>
-</style>
+</template>

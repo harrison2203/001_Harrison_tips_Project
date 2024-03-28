@@ -16,6 +16,7 @@ const mapping = {
 function filterFunction(){
 	const matchNames = [];
 		for (const title in mapping){
+			console.log('le title', title)
 			if(title.toLowerCase().includes(inputSearch.value.toLocaleLowerCase().replace(/ /g, ""))){
 				matchNames.push(mapping[title]);
 			}

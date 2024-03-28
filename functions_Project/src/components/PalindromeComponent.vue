@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
 import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
@@ -16,20 +16,21 @@ const result = ref('');
 function receiveEmitResult(newVal){
 	result.value = newVal;
 }
+
 function receiveEmit(newValue){
-    inputName.value = newValue;
+  inputName.value = newValue;
 }
 
 function isPalindrome (){
 
-    splitString.value = inputName.value.split("").reverse().join('')
+		splitString.value = inputName.value.split("").reverse().join('')
 
     if(splitString.value.toLowerCase() ===inputName.value.toLowerCase()) {
-        result.value = "It is a Palindrome !"
+				result.value = "It is a Palindrome !"
     } else {
-        result.value = "It is not a Palindrome !"
-    }
-    return result.value
+				result.value = "It is not a Palindrome !"
+		}
+		return result.value
 }
 </script>
 

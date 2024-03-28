@@ -1,9 +1,9 @@
 <script setup>
+import { ref } from 'vue';
 import ButtonComponent from './souscomponents/ButtonComponent.vue';
 import InputNameComponent from './souscomponents/InputNameComponent.vue';
 import DescriptionPropsComponent from './souscomponents/DescriptionPropsComponent.vue';
 import TitleComponent from './souscomponents/TitleComponent.vue';
-import { ref } from 'vue';
 import InputResultComponent from './souscomponents/InputResultComponent.vue';
 
 const titleCapital = "Capital Letter";

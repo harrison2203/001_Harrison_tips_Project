@@ -25,7 +25,7 @@ function onInputChange(){
 			inputNameInfo.value.invalid = true;
 		}
 	}
-};
+}
 </script>
 
 <template>

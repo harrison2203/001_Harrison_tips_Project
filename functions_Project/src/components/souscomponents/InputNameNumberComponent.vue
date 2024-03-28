@@ -8,7 +8,7 @@ const emits = defineEmits(['inputChangedNumber']);
 const inputNameInfo = ref({
   value: inputName,
   errorMessage: '',
-	invalid : null
+	invalid: null
 });
 
 function inputChangedNumber(){

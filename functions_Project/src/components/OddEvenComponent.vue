@@ -22,7 +22,7 @@ function receiveEmitNumber(newValue){
   inputName.value = newValue;
 }
 
-//principal fonction
+
 function evenOrNot(){
 	if(inputName.value %2 === 0){
 			result.value = "Even";

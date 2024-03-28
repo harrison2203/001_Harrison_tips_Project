@@ -21,7 +21,6 @@ function receiveEmit(newValue){
   inputName.value = newValue
 }
 
-//fonction principale
 function abbrevName() {
   let trimVariable = inputName.value.trim();
   let splitName = trimVariable.split(" ");

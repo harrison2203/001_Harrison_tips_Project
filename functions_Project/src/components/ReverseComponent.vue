@@ -9,8 +9,8 @@ import InputResultComponent from './souscomponents/InputResultComponent.vue';
 const descriptionComponent = "Write a word and get it reversed.";
 const customMessage = "Put your name:";
 const reverseName = ref ('Reverse'.split('').reverse().join(''));
-const reversedText = ref(''); // stocke la string inversé
-const inputName = ref(''); // stocke le string que je mets dans l'input
+const reversedText = ref('');
+const inputName = ref('');
 
 function receiveEmitResult(newVal){
 	reversedText.value = newVal
@@ -20,8 +20,8 @@ function receiveEmit(newValue){ // emit qui reçoit l'input de 'InputNameCompone
 }
 
 function reverse() { 
-  reversedText.value = inputName.value.split('').reverse().join(''); // cette fonction prend la valeur de nameReverse puis split reverse et join et ensuite le stocke dans reversedText
-  inputName.value = ''; // ici on réinitialise la valeur de la variable afin d'effacer le contenu de l'input
+  reversedText.value = inputName.value.split('').reverse().join('');
+  inputName.value = '';
 }
 </script>
 
